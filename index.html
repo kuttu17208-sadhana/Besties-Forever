@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kindergarten to Forever 💗</title>
+<style>
+:root{--pink:#ff6f9f;--deep:#8b315c;--cream:#fff8f3;--lav:#eee7ff}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#4b2940;background:linear-gradient(135deg,#fff1f5,#fff9ed 55%,#f1edff);min-height:100vh}
+main{max-width:760px;margin:auto;padding:28px 18px 70px}.card{background:#ffffffd9;border:1px solid #fff;border-radius:28px;padding:clamp(22px,5vw,42px);box-shadow:0 18px 55px #a94e7020;margin:18px 0;text-align:center}
+.kicker{letter-spacing:.16em;text-transform:uppercase;font-size:.72rem;color:#b65a7d;font-weight:800}
+h1{font-size:clamp(2.3rem,8vw,4.2rem);line-height:1.02;margin:12px 0;color:var(--deep)}h2{color:var(--deep);margin-top:8px}
+p{line-height:1.7}.big{font-size:3rem}.muted{color:#916b7e}
+button{border:0;border-radius:999px;padding:13px 21px;background:var(--pink);color:white;font-weight:800;font-size:1rem;cursor:pointer;margin:7px;box-shadow:0 7px 18px #ff6f9f35;transition:.2s}
+button:hover{transform:translateY(-2px)}button.secondary{background:#f1e6ef;color:#78425f;box-shadow:none}
+button:disabled{opacity:.55;cursor:not-allowed}.hidden{display:none!important}
+.pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}.pill{background:#fff0f5;border-radius:99px;padding:8px 13px;font-size:.86rem}
+.question{font-size:1.25rem;font-weight:800;margin:20px 0}.answers{display:grid;gap:10px;max-width:470px;margin:18px auto}.answers button{margin:0;background:#fff0f5;color:#783b5a;box-shadow:none;border:1px solid #f7c9d9}.answers button:hover{background:#ffe0eb}
+.progress{height:8px;background:#f5dce6;border-radius:20px;overflow:hidden;margin:18px 0}.progress span{display:block;height:100%;width:0;background:var(--pink);transition:.3s}
+.timeline{display:grid;gap:12px;text-align:left;margin:20px 0}.moment{background:#fff5f8;border-radius:18px;padding:15px}.moment b{color:#a74470}
+.note{background:linear-gradient(135deg,#fff1f6,#f4efff);padding:22px;border-radius:20px;text-align:left;line-height:1.85}
+footer{text-align:center;color:#a57b8e;font-size:.85rem;margin-top:26px}
+#confetti{font-size:1.6rem;min-height:30px}.tiny{font-size:.82rem}
+</style>
+</head>
+<body>
+<main>
+<section class="card" id="welcome">
+<div class="kicker">a highly scientific friendship experiment 🧪</div>
+<div class="big">👭🏻💗</div>
+<h1>Kindergarten<br>to Forever</h1>
+<p>Welcome, bestie. You have been selected for a very serious test of our friendship.</p>
+<div class="pills"><span class="pill">😂 40% nonsense</span><span class="pill">🥹 60% feelings</span><span class="pill">♾️ 100% us</span></div>
+<p class="muted">Warning: may cause laughing, smiling at your phone, and sudden emotional damage.</p>
+<button onclick="startGame()">I'M READY, YOU DRAMA QUEEN →</button>
+</section>
+
+<section class="card hidden" id="game">
+<div class="kicker">round 1 · the bestie examination</div>
+<div class="progress"><span id="bar"></span></div>
+<p class="muted" id="count"></p>
+<div class="big">🤨</div>
+<div class="question" id="question"></div>
+<div class="answers" id="answers"></div>
+<p id="reaction" class="muted"></p>
+</section>
+
+<section class="card hidden" id="roast">
+<div class="kicker">round 2 · official friendship report</div>
+<div class="big">🏆</div>
+<h2>Our friendship has been rated…</h2>
+<h1 style="font-size:3rem">UNHINGED</h1>
+<p>You are my favourite headache, my unpaid therapist, my personal comedian, and the only person who knows exactly how weird I am.</p>
+<p>Our friendship is proof that two people can share one brain cell and still somehow pass exams. (Allegedly.)</p>
+<button onclick="showTimeline()">Proceed to emotional damage →</button>
+</section>
+
+<section class="card hidden" id="timeline">
+<div class="kicker">round 3 · a tiny trip through time</div>
+<div class="big">🎞️</div>
+<h2>Look how far we've come…</h2>
+<div class="timeline">
+<div class="moment">🧸 <b>Kindergarten era</b><br>Two tiny humans. Zero responsibilities. Maximum chaos.</div>
+<div class="moment">🎒 <b>School days</b><br>Growing up, collecting memories, laughing at things nobody else understood.</div>
+<div class="moment">🎓 <b>College era</b><br>Different campuses, different schedules, same two idiots at heart.</div>
+<div class="moment">💗 <b>Every era after this</b><br>Still us. Still a team. Just with more assignments and less free time.</div>
+</div>
+<p class="muted">Distance changed our daily routine. It did not get a vote on our friendship.</p>
+<button onclick="showFinal()">I can handle the final level (maybe) →</button>
+</section>
+
+<section class="card hidden" id="final">
+<div class="kicker">final round · emotional damage incoming</div>
+<div class="big">🥺💌</div>
+<h2>One last question…</h2>
+<p class="question">If we could go back to kindergarten for just one day, would you come sit next to me again?</p>
+<button onclick="answerYes()">OBVIOUSLY. SAVE ME A SEAT. 💗</button>
+<button class="secondary" onclick="answerYes()">No, I need my adult responsibilities. (LIAR) 😂</button>
+<div id="letter" class="hidden">
+<div class="note">
+<p><b>To my forever person,</b></p>
+<p>Remember when being together was the easiest thing in the world? We didn't need to plan calls, check calendars, or count the days until we met. We just saw each other. And now, somehow, life has put us in different colleges and filled our days with different people and different routines.</p>
+<p>I miss the random talks, the silly laughs, the stupid jokes that only we understand, and simply having you around. Some days I wish I could pause everything, run to you, and tell you every little thing like old times.</p>
+<p>But listen, distance can have the colleges. It can have the timetables. It can have the assignments. It is NOT getting my best friend.</p>
+<p>Thank you for being part of my childhood and still being one of my favourite parts of life. From tiny kindergarten kids to the slightly stressed college versions of ourselves, I'm so glad it was you.</p>
+<p><b>We may not sit on the same classroom bench anymore, but you will always have a place in my life. I love you, idiot. Come meet me soon. 😭💗</b></p>
+<p style="text-align:right">— Your permanently attached headache 🫶</p>
+</div>
+<div id="confetti">💗 💖 💗 💖 💗</div>
+<h2>THE END?</h2>
+<p>Nope. Just the end of this website. Our story is still loading… ♾️</p>
+<button onclick="replay()">Replay our nonsense ↻</button>
+</div>
+</section>
+<footer>Made with love, nostalgia, and absolutely no emotional stability. 💌</footer>
+</main>
+<script>
+const questions=[
+ {q:"If our friendship had a customer-care helpline, what would the most common complaint be?",a:["My bestie is being dramatic again","I have sent 19 messages and received one '😂'","Both customers are the problem"],r:"Thank you for contacting Bestie Support. Your complaint has been ignored with love. 💅"},
+ {q:"We are suddenly famous. What is the scandal that gets us cancelled?",a:["Leaking our 2014 dance performance","Arguing publicly over who is the prettier idiot","Starting a podcast and forgetting to record it"],r:"The media has questions. We have absolutely no explanation. 🎤"},
+ {q:"If I got arrested, what would your first reaction be?",a:["WHAT DID YOU DO THIS TIME?!","I'll bring snacks. Tell me the full story.","I knew I should've chosen a less suspicious bestie"],r:"Bestie loyalty: 100%. Legal advice: absolutely unavailable. 🚔"},
+ {q:"Which award would we win as a duo?",a:["Olympic-level overthinking champions","World record for saying 'one last thing' for 2 hours","Best actresses in the 'I'm fine' category"],r:"And the award goes to… two people who need supervision. 🏆"},
+ {q:"A documentary crew follows us for 24 hours. What is its title?",a:["Two Brain Cells, Zero Wi-Fi","The Unemployed Detectives: Investigating Nothing","Why Are They Laughing? Nobody Knows"],r:"Critics call it confusing, loud, and weirdly emotional. Just like us. 🎬"},
+ {q:"If we swapped phones for 10 minutes, what would happen?",a:["Immediate regret and mutual blackmail","We'd discover 700 screenshots of each other","The friendship would need a software update"],r:"Privacy left the chat. Friendship entered witness protection. 📱"},
+ {q:"Our friendship is a government department. What do we specialise in?",a:["Spreading unnecessary information","Emergency gossip and snack distribution","Making simple plans impossible"],r:"Your application has been approved. Your salary is one hug and unlimited tea. ☕"},
+ {q:"If we opened a business together, what would it be?",a:["A therapy centre run by two people who need therapy","A detective agency that forgets the case","A restaurant where we eat the profits"],r:"Investors are crying. We are ordering fries. 🍟"},
+ {q:"What would happen if we tried to act mature for one whole day?",a:["We'd last 4 minutes and 12 seconds","Someone would laugh at the word 'potato'","Our families would suspect a scam"],r:"Maturity trial failed successfully. Please remain unserious. 🥔"},
+ {q:"In our future reunion, what is most likely to happen first?",a:["A 3-hour hug followed by 400 stories","We forget the plan and go eat","We say 'we have changed' and behave exactly the same"],r:"Different colleges. Same circus. Lifetime membership: NON-CANCELLABLE. 🎪"}
+];
+let index=0;
+function hideAll(){["welcome","game","roast","timeline","final"].forEach(id=>document.getElementById(id).classList.add("hidden"))}
+function startGame(){index=0;hideAll();document.getElementById("game").classList.remove("hidden");render()}
+function render(){
+ const item=questions[index];document.getElementById("question").textContent=item.q;
+ document.getElementById("count").textContent=`Question ${index+1} of ${questions.length}`;
+ document.getElementById("bar").style.width=((index)/questions.length*100)+"%";
+ document.getElementById("reaction").textContent="";
+ const box=document.getElementById("answers");box.innerHTML="";
+ item.a.forEach(answer=>{const b=document.createElement("button");b.textContent=answer;b.onclick=()=>{document.getElementById("reaction").textContent=item.r;box.innerHTML="";const next=document.createElement("button");next.textContent=index===questions.length-1?"Reveal our friendship report →":"Next question →";next.onclick=()=>{index++;if(index<questions.length)render();else{hideAll();document.getElementById("roast").classList.remove("hidden")}};box.appendChild(next)};box.appendChild(b)});
+}
+function showTimeline(){hideAll();document.getElementById("timeline").classList.remove("hidden")}
+function showFinal(){hideAll();document.getElementById("final").classList.remove("hidden")}
+function answerYes(){document.getElementById("letter").classList.remove("hidden");document.getElementById("letter").scrollIntoView({behavior:"smooth",block:"center"})}
+function replay(){document.getElementById("letter").classList.add("hidden");hideAll();document.getElementById("welcome").classList.remove("hidden")}
+</script>
+</body>
+</html>
